@@ -1,5 +1,7 @@
 public class Bienvenida {
 	public static void main(String[] args) {
-		System.out.println("Adrian Lopez Mendez") ; ("324188758") ; ("ASOIAF") ;
+		System.out.println("Adrian Lopez Mendez") ;
+		System.out.println("324188758") ;
+		System.out.println("ASOIAF") ;
 	}
 } 
