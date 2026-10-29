@@ -18,15 +18,15 @@ public class CotizadorPines {
         // ### Datos del prestamo ###
 
         // Monto prestado.
-        double precio = 12899.0;
+        double precio = -12899.0;
 
         double precioCompuesto = precio;
 
         // Porcentaje que se cobra por año.
-        double tasaAnual = 15.0;
+        double tasaAnual = -15.0;
 
         // Plazo en meses en los que se hará el pago.
-        int plazoMeses = 21;
+        int plazoMeses = -21;
 
         // ### Tipos de cliente ###
 
@@ -95,7 +95,17 @@ public class CotizadorPines {
             System.out.printf("Total con interés compuesto = $%.2f%n", saldoFinal);
             System.out.println();
         } else {
-            System.out.println("Inserta un valor valido");
+            System.out.println("No se pudo procesar la cotización por los siguientes errores:");
+
+            if (precio <= 0) {
+                System.out.println("- El monto del préstamo (precio) debe ser mayor a 0.");
+            }
+            if (plazoMeses <= 0) {
+                System.out.println("- El plazo en meses debe ser mayor a 0.");
+            }
+            if (plazoAnios <= 0) {
+                System.out.println("- El plazo en años debe ser mayor a 0.");
+            }
         }
 
     }
