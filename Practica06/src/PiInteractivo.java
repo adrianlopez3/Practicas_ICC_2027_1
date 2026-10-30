@@ -8,7 +8,7 @@ public class PiInteractivo {
         // Total de dardos
         int dardosTotales = 0;
         boolean dardosNoValidos = true;
-
+        // Mientras el numero de dardos sea no valido, seguira pidiendo un numero positivo
         while (dardosNoValidos) {
             System.out.print(">>>Pi Interactivo<<<\n ¿Cuántos dardos quieres lanzar? :");
 
@@ -24,7 +24,7 @@ public class PiInteractivo {
             } else {
 
                 entrada.next();
-                System.out.println("Ingresa un valor numerico");
+                System.out.println("Ingresa un valor numerico entero");
             }
         }
 
@@ -55,6 +55,7 @@ public class PiInteractivo {
         // aproximamos pi con MonteCarlo
         double aproxPi = 4.0 * dardosDentro / dardosTotales;
 
-        System.out.printf("Estimación de pi: %.6f", aproxPi);
+        System.out.printf("Estimación de pi: %.6f%n", aproxPi);
+        entrada.close();
     }
 }
