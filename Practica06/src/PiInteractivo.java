@@ -8,7 +8,8 @@ public class PiInteractivo {
         // Total de dardos
         int dardosTotales = 0;
         boolean dardosNoValidos = true;
-        // Mientras el numero de dardos sea no valido, seguira pidiendo un numero positivo
+        // Mientras el numero de dardos sea no valido, seguira pidiendo un numero
+        // positivo
         while (dardosNoValidos) {
             System.out.print(">>>Pi Interactivo<<<\n ¿Cuántos dardos quieres lanzar? :");
 
@@ -24,7 +25,7 @@ public class PiInteractivo {
             } else {
 
                 entrada.next();
-                System.out.println("Ingresa un valor numerico entero");
+                System.out.println("Ingresa un valor numerico entero menor a " + Integer.MAX_VALUE);
             }
         }
 

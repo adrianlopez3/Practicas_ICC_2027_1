@@ -14,7 +14,7 @@ public class Actividad {
 
 		// Mientras el numero sea no valido, seguira pidiendo un numero positivo
 		while (numeroNoValido) {
-			
+
 			System.out.print(">>>Conversor a Binario<<< \n Ingresa un numero positivo: ");
 			// Validamos que el numero sea un entero y positivo
 			if (entrada.hasNextInt()) {
@@ -23,8 +23,8 @@ public class Actividad {
 				if (numero > 0) {
 
 					numeroNoValido = false;
-					
-				// Si el numero es cero, se imprimira 0 y se saldra del ciclo
+
+					// Si el numero es cero, se imprimira 0 y se saldra del ciclo
 				} else if (numero == 0) {
 
 					System.out.print("0");
@@ -38,10 +38,8 @@ public class Actividad {
 
 			} else {
 				entrada.next();
-				System.out.println("Ingresa un numero entero");
-
+				System.out.println("Ingresa un numero entero menor a " + Integer.MAX_VALUE);
 			}
-
 		}
 
 		while (numero > 0) {
