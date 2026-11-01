@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Actividad {
+public class BinarioInteractivo {
 	public static void main(String[] args) {
 		// La herramienta que metera el dato del usuario
 		Scanner entrada = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class Actividad {
 					// Si el numero es cero, se imprimira 0 y se saldra del ciclo
 				} else if (numero == 0) {
 
-					System.out.print("0");
+					binario = "0";
 
 					numeroNoValido = false;
 
@@ -41,13 +41,14 @@ public class Actividad {
 				System.out.println("Ingresa un numero entero menor a " + Integer.MAX_VALUE);
 			}
 		}
-
+		// Se guardara el numero original para mostrarlo en pantalla
+		int numeroPantalla = numero;
 		while (numero > 0) {
 			int residuo = numero % 2;
 			binario = residuo + binario;
 			numero = numero / 2;
 		}
-		System.out.println(binario);
+		System.out.println("El numero " + numeroPantalla + " en binario es:" + binario);
 
 		// Se le preguntara si quiere volver a usarlo o no
 		System.out.print("¿Quieres volver a usar el programa? (s/n): ");

@@ -120,7 +120,7 @@ public class CabanaDelMisterio {
                                         case 1:
                                                 System.out.println(
                                                                 "\n### Opción 1 : Cotización de interés simple ###\n");
-                                                System.out.printf("> Cliente: %s %n>Tipo de cliente: %s%n",
+                                                System.out.printf("> Cliente: %s %n> Tipo de cliente: %s%n",
                                                                 nombreCliente, tipoClienteStr);
                                                 System.out.printf("> Tasa aplicada = %.0f%%%n", tasaAplicada);
                                                 System.out.printf("> Prestamo = $ %.2f%n", capital);
@@ -135,6 +135,11 @@ public class CabanaDelMisterio {
                                         case 2:
                                                 System.out.println(
                                                                 "\n### Opción 2 : Cotización de interés compuesto ###\n");
+                                                System.out.printf("> Cliente: %s %n> Tipo de cliente: %s%n",
+                                                                nombreCliente, tipoClienteStr);
+                                                System.out.printf("> Tasa aplicada = %.0f%%%n", tasaAplicada);
+                                                System.out.printf("> Prestamo = $ %.2f%n", capital);
+                                                System.out.printf("> Meses de pago = %d%n", plazoMeses);
                                                 System.out.println();
                                                 for (int mes = 1; mes <= plazoMeses; mes++) {
                                                         saldo = saldo * (1 + tasaMensual);
@@ -214,7 +219,8 @@ public class CabanaDelMisterio {
                                                                         - capital;
                                                         double diferenciaNueva = Math.abs(interesCompuestoCuatro
                                                                         - interesSimpleCuatro);
-
+                                                        System.out.println(
+                                                                        "\n### Opción 4 : Nuevo monto ###\n");
                                                         System.out.printf("> Interés simple = $%.2f%n",
                                                                         interesSimpleCuatro);
                                                         System.out.printf(
@@ -237,7 +243,8 @@ public class CabanaDelMisterio {
 
                                         case 0:
                                                 System.out.println(
-                                                                "!Hasta luego! Gracias por usar el sistema de prestamos de la Cabaña del Misterio.");
+                                                                "!Hasta luego! " + nombreCliente
+                                                                                + " Gracias por usar el sistema de prestamos de la Cabaña del Misterio.");
                                                 break;
 
                                         default:
@@ -259,20 +266,28 @@ public class CabanaDelMisterio {
                         System.out.println();
 
                         // Condición que termina si escoge 0, si hay 3 errores, o si hay 5 operaciones
-                } while (opcion != 0 && errores <= 3 && operacionesEfectivas <= 5);
+                } while (opcion != 0 && errores < 3 && operacionesEfectivas < 5);
 
                 // Bloque de salida definitivo
                 if (errores >= 3) {
-                        System.out.println("Gracias por usar el sistema de prestamos de la Cabaña del Misterio.");
+                        System.out.println("Gracias " + nombreCliente
+                                        + " por usar el sistema de prestamos de la Cabaña del Misterio.");
+                        System.out.printf("El capital con el que terminó el préstamo es de: $%.2f", capital);
+                        System.out.println("\nEl programa termino por que se llego al limite de errores");
                         System.out.println("Se han cometido " + errores + " errores\n y " + operacionesEfectivas
                                         + " operaciones efectivas. Hasta pronto");
                 } else if (operacionesEfectivas >= 5) {
-                        System.out.println("Gracias por usar el sistema de prestamos de la Cabaña del Misterio.");
+                        System.out.println("Gracias " + nombreCliente
+                                        + " por usar el sistema de prestamos de la Cabaña del Misterio.");
+                        System.out.printf("El capital con el que terminó el préstamo es de: $%.2f", capital);
+                        System.out.println("\nEl programa termino por que se llego al limite de operaciones efectivas");
                         System.out.println("Se han realizado " + operacionesEfectivas + " operaciones\n y " + errores
                                         + " errores. Hasta pronto");
                 } else {
-                        System.out.println("Se relizaron " + operacionesEfectivas + " operaciones efectivas y");
-                        System.out.println("se cometieron " + errores + " errores.");
+                        System.out.printf("El capital con el que terminó el préstamo es de: $%.2f", capital);
+                        System.out.println("\nEl programa termino por que se ingreso el 0");
+                        System.out.println("Se relizaron " + operacionesEfectivas + " operacion(es) efectiva(s) y");
+                        System.out.println("se cometieron " + errores + " error(es).");
 
                 }
 
