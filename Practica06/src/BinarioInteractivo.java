@@ -5,7 +5,7 @@ public class BinarioInteractivo {
 		// La herramienta que metera el dato del usuario
 		Scanner entrada = new Scanner(System.in);
 
-		// Variable para almacenar el numero en binario
+		// Variable para almacenar el numero binario
 		String binario = "";
 		int numero = 0;
 
