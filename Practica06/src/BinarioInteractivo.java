@@ -12,7 +12,7 @@ public class BinarioInteractivo {
 		// Variable para controlar el ciclo de validacion del numero
 		boolean numeroNoValido = true;
 
-		// Mientras el numero sea no valido, seguira pidiendo un numero positivo
+		// Mientras el numero sea no valido, seguira pidiendo un numero 
 		while (numeroNoValido) {
 
 			System.out.print(">>>Conversor a Binario<<< \n Ingresa un numero positivo: ");
