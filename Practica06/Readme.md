@@ -1,4 +1,5 @@
-# Práctica 6 --- Ciclos y validación de entradas
+# Práctica 6 --- Ciclos y Entrada de datos
+> Cierre del proyecto Cabaña del Misterio
 ## Valar Morghulis 
 
 Este proyecto contiene tres programas interactivos escritos en Java:
