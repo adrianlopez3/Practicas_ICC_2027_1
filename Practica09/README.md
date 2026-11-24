@@ -338,10 +338,53 @@ Saliendo del sistema postal...
 ## Preguntas de reflexión 
 
 1. **¿En qué se diferencia clonar un `Paquete` (`new Paquete(kitBase)`) de clonar una guía de `Envio` (`new Envio(guiaBase, nuevoPaquete)`) respecto a qué objetos se comparten y cuáles se duplican en memoria?**
-   > [Escribe aquí tu respuesta]
+   > Cuando clono un ‘’Paquete’’ usando el constructor ‘’new Paquete(kitBase)’’, lo que hago es crear un objeto totalmente 
+   > nuevo e independiente en la memoria. Como todos sus atributos (‘’peso’’, ‘’alto’’, ‘’ancho’’, ‘’largo’’, ‘’valorDeclarado’’ 
+   > y ‘’envioExpress’’) son datos primitivos, y el ‘’codigoRastreo’’ es un ‘’String’’ que es inmutable, con copiar sus valores 
+   > ya basta para que el clon no comparta nada con el original. De ahí, si después le cambio el código de rastreo o el peso al 
+   > clon, al ‘’kitBase’’ original no le pasa nada.
+   >
+   > Por otro lado, cuando clono una guía con ‘’new Envio(guiaBase, nuevoPaquete)’’ el resultado es mixto:
+   >
+   > * Se duplica el objeto ‘’Envio’’, o sea que me crea una nueva guía con su propio ‘’folioGuia’’.
+   > * Se comparten el remitente y el destinatario, porque el constructor nada más copia las referencias, así que la guía original 
+   >   y la clonada terminan apuntando a los mismos objetos ‘’Persona’’.
+   > * Se le asocia el ‘’nuevoPaquete’’ que le paso como parámetro, en vez de copiar el paquete que ya tenía ‘’guiaBase’’.
+   >
+   > Esto pasa porque es agregación. Las personas existen por sí mismas y varias guías pueden hacer referencia a ellas. Por eso, 
+   > si modifico algún dato de la ‘’Persona’’ desde una guía, el cambio se va a ver en todas las guías que la compartan, y con el 
+   > ‘’Paquete’’ esto no pasa.
 
 2. **Para generar el `folioGuia` con un número consecutivo global y consultar cuántas guías se han emitido en total, ¿qué modificador tuviste que utilizar en ese atributo y en su método de consulta? ¿Por qué no funcionaría si el contador fuera un atributo normal de instancia?**
-   > [Escribe aquí tu respuesta]
+   > Aquí utilicé el modificador ‘’static’’ en dos lugares:
+   >
+   > * En el atributo contador (por ejemplo, ‘’private static int totalGuias = 0;’’).
+   > * En el método de consulta (por ejemplo, ‘’public static int getTotalGuias()’’).
+   >
+   > Un atributo ‘’static’’ le pertenece a la clase y existe una sola vez en la memoria, o sea que lo comparten todos los objetos 
+   > ‘’Envio’’. De ahí, cada vez que se usa un constructor, este contador va aumentando y utilizo su valor para ponerle el número 
+   > al folio (‘’"GUIA-XXX-N"’’). También, el método ‘’static’’ lo puedo mandar a llamar directo con ‘’Envio.getTotalGuias()’’ sin 
+   > tener ningún objeto creado, así que funciona incluso antes de sacar la primera guía y me devuelve 0.
+   >
+   > Si lo hubiera hecho con un atributo de instancia no funcionaría, porque cada objeto tendría su propia copia del contador y 
+   > siempre empezaría en 0 cada vez que creo una guía. Todos los folios terminarían en -1 y no tendría forma de saber cuántas 
+   > guías hay en total. Aparte, un método de instancia me pediría tener ya un objeto creado para poder consultar el total, y eso 
+   > va en contra de poder consultarlo antes de hacer la primera guía.
+
 
 3. **Si una guía `envio1` se descarta (`envio1 = null;`), ¿qué ocurre en memoria con los objetos `Persona` (remitente/destinatario) y `Paquete` que estaban asociados a ella?**
-   > [Escribe aquí tu respuesta]
+   > Cuando hago ‘’envio1 = null;’’ lo único que pasa es que se elimina la referencia que tenía esa variable hacia el objeto ‘’Envio’’. 
+   > De ahí, lo que pase con los demás objetos depende de si todavía tienen otras referencias apuntándoles:
+   >
+   > * El objeto ‘’Envio’’, si ya nadie más lo referencia, se queda inalcanzable y el recolector de basura (garbage collector) ya lo 
+   >   puede liberar.
+   > * Los objetos ‘’Persona’’ no se eliminan si otra variable o guía los sigue referenciando. En mi simulación, X y Y siguen vivos 
+   >   porque las otras guías y las variables del ‘’main’’ todavía apuntan a ellos.
+   > * El ‘’Paquete’’ se libera junto con la guía solamente si ningún otro objeto lo referencia; si otra variable lo sigue usando, ahí 
+   >   sigue vivo.
+   >
+   > Un objeto se puede ir al recolector de basura cuando ya no es alcanzable desde ninguna referencia activa. Poner ‘’null’’ no libera 
+   > la memoria al instante, nada más quita una referencia, y después la JVM decide en qué momento exacto libera ese espacio. Que la guía 
+   > contenga a las personas y al paquete no significa que sea su dueña, porque la relación es de agregación y no de composición. Aparte, 
+   > el contador ‘’static’’ de guías emitidas no baja cuando descarto ‘’envio1’’, porque cuenta las guías que se han emitido en total y no 
+   > las que siguen vivas.
