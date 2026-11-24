@@ -4,7 +4,7 @@
  * Cada persona tiene un identificador, su numbre completo y la ciudad donde 
  * se encuentra, que sirve para saber si un envio es local o foraneo.
  *  * 
- * @author Lopez Mendez Adrian / 324188758
+ * @author Lopez Mendez Adrian / 324188758, Romero Arzate Omar / 121006480
  * @version 2.0
  */
 public class Persona {

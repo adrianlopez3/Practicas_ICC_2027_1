@@ -5,7 +5,7 @@
  * volumetrico, peso cobrable, constructor por copia y representacion
  * textual (toString).
  * 
- * @author Lopez Mendez Adrian / 324188758
+ * @author Lopez Mendez Adrian / 324188758, Romero Arzate Omar / 121006480
  * @version 2.0
  */
 public class Paquete {

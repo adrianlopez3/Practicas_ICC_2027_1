@@ -2,7 +2,7 @@
  * Programa de pruebas y simulacion para las Guias de Envios
  * Ejecuta pruebas automatizadas.
  * 
- * @author Lopez Mendez Adrian / 324188758
+ * @author Lopez Mendez Adrian / 324188758, Romero Arzate Omar / 121006480
  * @version 2.0
  */
 public class PruebaEnvio {

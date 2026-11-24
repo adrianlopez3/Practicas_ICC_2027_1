@@ -5,7 +5,7 @@
  * Cada guia recibe automaticamente un folio unico al momento de crearse
  * (compuesto por caracteres aleatorios y un numero consecutivo global).
  * 
- * @author Lopez Mendez Adrian / 324188758
+ * @author Lopez Mendez Adrian / 324188758, Romero Arzate Omar / 121006480
  * @version 2.0
  */
 public class Envio {

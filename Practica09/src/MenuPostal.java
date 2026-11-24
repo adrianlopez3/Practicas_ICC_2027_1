@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Programa interactivo por consola para gestionar guias de envio (Parte 4).
  * 
- * @author Lopez Mendez Adrian / 324188758
+ * @author Lopez Mendez Adrian / 324188758, Romero Arzate Omar / 121006480
  * @version 2.0
  */
 public class MenuPostal {
